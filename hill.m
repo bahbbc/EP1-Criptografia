@@ -17,14 +17,14 @@ function C = hill(P, K)
 	%calcula o teto para fazer uma matriz quadrada (automaticamente preenche o resto com zeros)
 	raiz = ceil(sqrt(length(M)));
 	%guarda o tamanho original da matriz para refazer o texto criptografado
-	original_size = length(P)
+	original_size = length(P);
 	%transforma o texto claro em matriz
 	Q = vec2mat(M,raiz);
 	M = mod(Q*K, 26)+1;
 	%transforma o resultado criptografado em vetor para o match das letras
 	P = Kdec(M(:)');
 	%remove zeros preenchidos anteriormente
-	P = (1:original_size)
+	P = P(1:original_size);
 	% Retorna para caixa alta
 	P(indexCaixaAlta) = P(indexCaixaAlta) + ('A'-'a');
 

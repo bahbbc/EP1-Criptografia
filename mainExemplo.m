@@ -5,12 +5,13 @@ C = monoalfabeticaE(P,'knmporqtsvuxwzybadcfeghjil');
 [rateMono character] = countCharacters(C);
 C2 = vigenere(P,'knmporqtsvuxwzybadcfeghjil');
 [rateMono2 character] = countCharacters(C2);
-C3 = hill(P, [17, 17, 5; 21,18,21;2,2,19]);
+C3 = hill(P, randi(26, 449,449));
 [rateMono3 character] = countCharacters(C3);
-
+C4 = vigenereIncrementado(P, 'a');
+[rateMono4 character] = countCharacters(C4);
     
-plot([1:26],[rateMono;rateMono2, rateMono3]);
-legend('Monoalfabetica', 'Vigenere', 'Hill');
+plot([1:26],[rateMono; rateMono2; rateMono3; rateMono4]);
+legend('Monoalfabetica', 'Vigenere', 'Hill', 'vigenere Incrementado');
 title('Frequencia de Letras em Textos Cifrados');
 xlabel('letras');
 ylabel('percentagem de ocorrencia');
