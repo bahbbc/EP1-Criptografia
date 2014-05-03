@@ -1,6 +1,7 @@
 function C = vigenere(P, K)
 
-C = '';
+C = P;
+
 % Elimina caracteres que nao sao texto
 indexTexto = find((P>='a'&P<='z')|(P>='A'&P<='Z'));
 P = P(indexTexto);
@@ -11,17 +12,20 @@ P(indexCaixaAlta) = P(indexCaixaAlta) + ('a'-'A');
 
 Kdec = 'abcdefghijklmnopqrstuvwxyz';
 i = 1;
-%P1 = '';
+I = '';
 while i <= length(P)
+	%calculo por posicao do texto claro
 	aux = Kdec(mod(P(i)-'a'+K-'a', 26)+1);
+	%guarda a letra salva pra prox chave
 	K = aux;
-	C = [C, aux];
+	%incrementa a letra no vetor ja obtido
+	I = [I, aux];
 	i = i+1;
 end
 % Retorna para caixa alta
-P(indexCaixaAlta) = P(indexCaixaAlta) + ('A'-'a');
+I(indexCaixaAlta) = I(indexCaixaAlta) + ('A'-'a');
 
 % Atualiza caracteres que sao texto
-%C(indexTexto) = P;
+C(indexTexto) = I;
 
 end
