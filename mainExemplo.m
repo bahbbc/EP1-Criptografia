@@ -3,7 +3,7 @@ P = readText('NotesUndergound.txt');
 C = monoalfabeticaE(P,'knmporqtsvuxwzybadcfeghjil');
 %saveText(C,'crimepunishment_Cifrado.txt');
 [rateMono character] = countCharacters(C);
-C2 = vigenere(P,'knmporqtsvuxwzybadcfeghjil');
+C2 = vigenere(P,'kde');
 [rateMono2 character] = countCharacters(C2);
 C3 = hill(P, randi(26, 449,449));
 [rateMono3 character] = countCharacters(C3);

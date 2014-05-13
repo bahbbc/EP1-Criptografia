@@ -24,7 +24,7 @@ freq = (freq+1/100)/(N-1+26*26/100);
 Nsize = 10;  % quantos tamanhos de textos diferentes (aumenta de 10 em 10)
 Ntextos = 50; % quantas vezes repete o experimento
 
-keys = keysMonoalfabetica(7);
+keys = keysVigenere(3,17);
 
 probMax = zeros(Nsize, Ntextos);
 probReal = zeros(Nsize, Ntextos);
@@ -38,13 +38,13 @@ for tamanho=1:Nsize
     
     % sorteia uma chave	
 	keyRealInd = ceil(rand*size(keys,1));
-	cifra = monoalfabeticaE(plain,keys(keyRealInd,:));
+	cifra = vigenere(plain,keys(keyRealInd,:));
 
     % encontra a verossimilhanca de toda chave
-	probs = mlMonoalfabetica(freq,keys,cifra);
+	probs = mlVigenere(freq,keys,cifra);
 	probMax(tamanho,texto) = max(probs);
 	probReal(tamanho,texto) = probs(keyRealInd);
-    
+    Disp('.');
     %save monoalfabetica.mat probMax probReal
 end
 end
