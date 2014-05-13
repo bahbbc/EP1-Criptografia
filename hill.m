@@ -24,9 +24,9 @@ function C = hill(P, K)
 		i = raiz*2;
 		Q = M(:)';
 		answer = mod(K*Q(1:raiz)', 26)+1;
-		while j < length(M)
+		while j <= length(M)
 			if i > length(M)
-				final_vector = zeros(i-length(Q));
+				final_vector = zeros(1,i-length(Q));
 				Q = [Q,final_vector];
 			end
 			S = Q(j:i);
@@ -35,7 +35,7 @@ function C = hill(P, K)
 			i = i+raiz;
 		end
 		%transforma o resultado criptografado em vetor para o match das letras
-		P = Kdec(answer(:)');
+		P = Kdec(answer(:));
 		%remove zeros preenchidos anteriormente
 		P = P(1:original_size);
 		% Retorna para caixa alta
@@ -43,5 +43,5 @@ function C = hill(P, K)
 
 		% Atualiza caracteres que sao texto
 		C(indexTexto) = P;
-	end
+    end
 end
